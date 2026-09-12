@@ -151,47 +151,9 @@
 
 
 /* First-open invitation animation */
-.opening-screen{position:fixed;inset:0;z-index:9999;display:grid;place-items:center;padding:20px;background:radial-gradient(circle at 50% 25%,#fff 0,#fff5f9 42%,#f7d8e5 100%);transition:opacity .65s ease,visibility .65s ease;}
-.opening-screen.hidden{opacity:0;visibility:hidden;pointer-events:none;}
-.opening-card{width:min(92vw,520px);text-align:center;padding:30px 24px 26px;border:1px solid rgba(200,149,36,.28);border-radius:28px;background:rgba(255,255,255,.78);box-shadow:0 24px 70px rgba(120,50,80,.22);backdrop-filter:blur(8px);}
-.opening-title{margin:0;color:#c95b82;font-size:clamp(30px,7vw,46px);font-family:Georgia,serif;}
-.opening-subtitle{margin:8px 0 18px;color:#8d5c70;font-size:15px;}
-.envelope-wrap{position:relative;width:min(88vw,390px);height:250px;margin:0 auto 12px;perspective:900px;}
-.envelope{position:absolute;inset:30px 0 0;border-radius:12px;background:linear-gradient(145deg,#f8b4cf,#e985ae);box-shadow:0 16px 30px rgba(185,90,127,.22);overflow:visible;}
-.envelope:before,.envelope:after{content:"";position:absolute;bottom:0;width:0;height:0;border-style:solid;z-index:2;}
-.envelope:before{left:0;border-width:0 0 150px 195px;border-color:transparent transparent #f39abb transparent;}
-.envelope:after{right:0;border-width:150px 0 0 195px;border-color:transparent transparent transparent #ee8fb4;}
-.envelope-flap{position:absolute;left:0;top:0;width:100%;height:135px;background:linear-gradient(180deg,#ffd0e1,#f29abe);clip-path:polygon(0 0,100% 0,50% 82%);transform-origin:50% 0;transition:transform .85s cubic-bezier(.2,.8,.2,1);z-index:5;}
-.envelope-seal{position:absolute;left:50%;top:82px;transform:translateX(-50%);width:54px;height:54px;border-radius:50%;display:grid;place-items:center;background:#e83c7c;color:white;font-size:24px;box-shadow:0 6px 16px rgba(185,90,127,.28);z-index:7;transition:.4s;}
-.invitation-paper{position:absolute;left:8%;top:34px;width:84%;height:178px;border-radius:10px;background:#fffdfd;box-shadow:0 5px 15px rgba(90,40,60,.16);z-index:3;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;color:#a15b75;transition:transform .9s cubic-bezier(.2,.8,.2,1);}
-.invitation-paper strong{font-size:19px;color:#c95b82;}
-.invitation-paper span{font-size:12px;}
-.mini-heart{font-size:25px;}
-.open-invitation-btn{border:0;cursor:pointer;color:white;background:linear-gradient(135deg,#d991ad,#b95a7f);padding:13px 25px;border-radius:999px;font-weight:700;font-size:16px;box-shadow:0 10px 24px rgba(185,90,127,.28);transition:transform .2s ease;}
-.open-invitation-btn:hover{transform:translateY(-2px);}
-.opening-hint{margin-top:11px;color:#9a6378;font-size:12px;}
-.opening-screen.opening .envelope-flap{transform:rotateX(-178deg);}
-.opening-screen.opening .envelope-seal{opacity:0;transform:translateX(-50%) scale(.6);}
-.opening-screen.opening .invitation-paper{transform:translateY(-92px);}
-@media(max-width:600px){.envelope-wrap{height:220px}.envelope{inset:25px 0 0}.envelope-flap{height:115px}.envelope-seal{top:70px}.invitation-paper{top:30px;height:155px}}
 </style>
 </head>
 <body>
-<div class="opening-screen" id="openingScreen" aria-label="Opening invitation">
-  <div class="opening-card">
-    <h1 class="opening-title">You're Invited 💗</h1>
-    <p class="opening-subtitle">A special birthday celebration for Athena</p>
-    <div class="envelope-wrap">
-      <div class="envelope">
-        <div class="invitation-paper"><div class="mini-heart">💗</div><strong>Athena's 7th Birthday</strong><span>October 4, 2026 · 2:00 PM</span></div>
-        <div class="envelope-flap"></div><div class="envelope-seal">♥</div>
-      </div>
-    </div>
-    <button class="open-invitation-btn" id="openingBtn" type="button">💌 Open Invitation</button>
-    <div class="opening-hint">Tap to open your invitation</div>
-  </div>
-</div>
-
 
 <div class="welcome-overlay" id="welcomeOverlay" aria-label="Opening invitation">
   <div class="welcome-card">
@@ -393,11 +355,6 @@
     if (musicOn) stopBirthdayMusic(); else startBirthdayMusic();
   });
 })();
-</script>
-
-
-<script>
-(()=>{const screen=document.getElementById('openingScreen'),btn=document.getElementById('openingBtn');function openFirst(){if(screen.classList.contains('opening'))return;screen.classList.add('opening');setTimeout(()=>screen.classList.add('hidden'),1100);}btn.addEventListener('click',openFirst);screen.addEventListener('click',e=>{if(e.target===screen)openFirst();});})();
 </script>
 </body>
 </html>
